@@ -64,7 +64,7 @@ export class ApiUcqService {
     return this.http.get<any>(this.url+'getFecha');
   }
 
-  updateFecha(fecha:Date,dias:Number){
+  updateFecha(fecha:Number,dias:Number){
     return this.http.put<any>(this.url+'updateFecha',{
       fechaLimite:fecha,
       dias:dias,

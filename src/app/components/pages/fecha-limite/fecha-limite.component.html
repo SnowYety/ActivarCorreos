@@ -1,10 +1,11 @@
 <app-navbar></app-navbar>
 <div class="animated fadeIn container col-12 mt-4">
   <div class="container col-12 col-md-6">
-    <div class="row">  <label class="form-label fs-5 fw-bold">Fecha Limite</label></div>
-    <input [disabled]="editar"  [(ngModel)]="fechaLimite" class="form-control" matInput [matDatepicker]="picker" style="display:inline;width: 550px;">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
+    <label class="form-label fs-5 fw-bold">Fecha Limite</label>
+    <select [disabled]="editar"  class="form-select form-select mb-3 fs-5" aria-label=".form-select-lg example" 
+      [(ngModel)]="fechaLimite" >
+      <option *ngFor="let dia of diasC " [value]=dia>{{dia}}</option>
+    </select>
   </div>
   <div class="container col-12 col-md-6 mt-3">
     <label class="form-label fs-5 fw-bold">Dias</label>
