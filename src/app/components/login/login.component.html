@@ -1,0 +1,27 @@
+<div class=" animated fadeIn d-flex justify-content-center mt-5">
+    
+    <div class="col-12 col-md-4 text-center border border-dark border-2 rounded-3 my-auto">
+        <div class="row d-flex justify-content-center"> <img src="../../../assets/Img/logo.png"></div>
+        <form #forma="ngForm" (ngSubmit)="longIn(forma)">
+            <div class="row justify-content-center">
+                <div class=" row col-8">
+                    <label class="form-label fs-5 fw-bold"> <i class="fa-solid fa-user"></i> Usuario</label>
+                    <input [(ngModel)]="user" type="text" class="form-control" id="usuario" name="user" 
+                     required>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3 mb-5">
+                <div class=" row col-8">
+                    <label class="form-label fs-5 fw-bold"><i class="fa-solid fa-lock"></i> Contraseña</label>
+                    <input [(ngModel)]="password" type="password" class="form-control" id="password" name="password" required>
+                </div>
+            </div>
+            <div class="row justify-content-center mt-3 mb-5">
+                <div class=" row col-8">
+                   <button type="submit" class="btn btn-primary fs-5 fw-bold">Ingresar <i class="fa-solid fa-right-to-bracket"></i></button>
+                </div>
+            </div>
+        </form>
+        
+    </div>
+</div>

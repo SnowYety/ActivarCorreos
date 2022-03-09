@@ -1,0 +1,56 @@
+<app-navbar></app-navbar>
+
+
+<div class="animated fadeIn container col-12 mt-4">
+  <div *ngIf="alumnos.length > 0"> <button class="btn btn-success fw-bold fs-5" (click)="eliminarDatos()"><i
+        class="fa-solid fa-magnifying-glass"></i> Volver a Buscar</button></div>
+  <form #forma="ngForm" *ngIf="alumnos.length == 0" (ngSubmit)="getTutores(forma)">
+    <div class="container col-12 col-md-6">
+      <label class="form-label fs-5 fw-bold">Año</label>
+      <select class="form-select form-select mb-3 fs-5" aria-label=".form-select-lg example" name="anio"
+        [(ngModel)]="anio" (ngModelChange)="getPeriodo()" required>
+        <option *ngFor="let anio of anios" [value]="anio.anio">{{anio.anio | capitalizado}}</option>
+      </select>
+    </div>
+    <div class="container col-12 col-md-6" *ngIf="anio != 'Seleccione un año'">
+      <label class="form-label fs-5 fw-bold">Periodo</label>
+      <select class="form-select form-select mb-3 fs-5 " aria-label=".form-select-lg example" name="periodo"
+        [(ngModel)]="periodo" (ngModelChange)="getSession()" required>
+        <option *ngFor="let periodo of periodos" [value]="periodo.periodo">{{periodo.periodo | capitalizado}}</option>
+      </select>
+    </div>
+    <div class="container col-12 col-md-6" *ngIf="periodo != 'Seleccione un periodo'">
+      <label class="form-label fs-5 fw-bold">Session</label>
+      <select class="form-select form-select mb-3 fs-5" aria-label=".form-select-lg example" name="session"
+        [(ngModel)]="session" (ngModelChange)="habilitarBotton()">
+        <option *ngFor="let session of sessiones" [value]="session.IdSession">{{session.session | capitalizado}}
+        </option>
+      </select>
+    </div>
+    <div class="container col-12 col-md-6  d-grid gap-2">
+      <button class="btn btn-success btn-lg fw-bolder fs-5" [disabled]="!habilitar" type="submit"><i
+          class="fa-solid fa-magnifying-glass"></i> Buscar</button>
+    </div>
+  </form>
+  <div class="col-12 pt-4 animate__animated animate__fadeInLeft" *ngIf="alumnos.length > 0">
+    <table datatable class="table table-light text-center table-striped mt-4">
+      <thead>
+        <tr>
+          <th scope="col">Matricula</th>
+          <th scope="col">Nombre</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody class="align-middle">
+        <tr *ngFor="let alumno of alumnos">
+          <th scope="row">{{alumno.matricula}}</th>
+          <td>{{alumno.nombre | capitalizado}} {{alumno.segundoNombre | capitalizado}} {{alumno.apellidoPaterno |
+            capitalizado}} {{alumno.apellidoMaterno | capitalizado}}</td>
+          <td><button (click)="getAlumno(alumno.matricula)"
+              class="btn btn-outline-primary border border-light rounded-circle fs-5"><i
+                class="fa-solid fa-pen-clip"></i></button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

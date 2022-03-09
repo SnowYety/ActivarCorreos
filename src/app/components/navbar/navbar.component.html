@@ -1,0 +1,23 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fs-5">
+    <div class="container-fluid">
+        <a class="navbar-brand fs-5" href="#">UCQ</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" aria-current="page" [routerLink]="['/alumnos']"
+                        routerLinkActive="active"><i class="fa-solid fa-users"></i> Alumnos</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link fw-bold" [routerLink]="['/reportes']" routerLinkActive="active"><i class="fa-solid fa-list-ul"></i> Reportes</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link fw-bold" [routerLink]="['/fechaLimite']" routerLinkActive="active"><i class="fa-solid fa-calendar"></i> Fecha Limite</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

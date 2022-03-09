@@ -1,0 +1,149 @@
+
+<app-navbar></app-navbar>
+<div class=" animated fadeIn container col-12 mt-4">
+    <div class="conatainer mt-3">
+        <div class="row col-12">
+            <div class="col-10">
+                <h2>Datos del alumno</h2>
+            </div>
+            <div class="col-2 d-flex justify-content-end"><button type="button" class="btn btn-success fs-5" [routerLink]="['/alumnos']"><i
+                        class="fa-solid fa-circle-arrow-left"></i> Regresar</button></div>
+        </div>
+        <hr>
+        <div class="conatainer row col-12 mb-2">
+            <div class="form-group col-12 col-md-6 col-lg-3 mb-2">
+                <label class="form-text">Nombre</label>
+                <input class="form-control fw-bold" placeholder="Nombre" type="text" [(ngModel)]="alumno.persona.nombre"
+                    name="nombre" disabled>
+            </div>
+            <div class="form-group col-12 col-md-6 col-lg-3 mb-2">
+                <label class="form-text">Segundo Nombre</label>
+                <input class="form-control fw-bold" placeholder="Segundo Nombre" type="text"
+                    [(ngModel)]="alumno.persona.segundoNombre" name="segundoNombre" disabled>
+            </div>
+            <div class="form-group col-12 col-md-6 col-lg-3 mb-2">
+                <label class="form-text">Apellido Paterno</label>
+                <input class="form-control fw-bold" placeholder="Apellido Paterno" type="text"
+                    [(ngModel)]="alumno.persona.apellidoPaterno" name="apellidoPaterno" disabled>
+            </div>
+            <div class="form-group col-12 col-md-6 col-lg-3 mb-2">
+                <label class="form-text">Apellido Materno</label>
+                <input class="form-control fw-bold" placeholder="Apellido Materno" type="text"
+                    [(ngModel)]="alumno.persona.apellidoMaterno" name="apellidoMaterno" disabled>
+            </div>
+            <div *ngIf="correos.length > 0">
+                <h4>Datos de Contacto</h4>
+                <hr>
+                <h5 >Correos</h5>
+                <table class="table mb-4">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Correo</th>
+                            <th class="text-center">Status</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let correo of correos">
+                            <td class="text-center">{{correo.correo}}</td>
+                            <td class="text-center fs-4"><i *ngIf="correo.status"
+                                    class="fa-solid fa-check-double text-success"></i>
+                                <i *ngIf="!correo.status" class="fa-solid fa-x text-danger"></i>
+                            </td>
+                            <td class="d-flex justify-content-center"><button *ngIf="correo.status"
+                                    class="btn btn btn-outline-danger rounded-pill fs-6 fw-bold"
+                                    (click)="cambiarStatus(correo)"><i class="fa-solid fa-circle-xmark"></i>
+                                    Desactivar</button>
+                                <button *ngIf="!correo.status" class="btn btn-outline-primary rounded-pill fs-6 fw-bold"
+                                    (click)="cambiarStatus(correo)"><i class="fa-solid fa-circle-check"></i> Activar
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+    
+        </div>
+    
+        <!-- <h5>Telefonos</h5>
+        <hr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th class="text-center">Correo</th>
+                    <th class="text-center">Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let correo of correos">
+                    <td class="text-center">{{correo.correo}}</td>
+                    <td class="text-center fs-4"><i *ngIf="correo.status" class="fa-solid fa-check-double text-success"></i>
+                    <i *ngIf="!correo.status" class="fa-solid fa-x text-danger"></i></td>
+                    <td><button *ngIf="correo.status" class="btn btn-danger"><i class="fa-solid fa-circle-xmark"></i> Desactivar</button>
+                        <button *ngIf="!correo.status" class="btn btn-primary"><i class="fa-solid fa-circle-check"></i> Activar</button></td>
+                </tr>
+            </tbody>
+        </table> -->
+        <div *ngIf="tutores.length > 0" class="mb-5">
+            <h3>Tutores</h3>
+            <hr>
+            <div *ngFor="let tutor of tutores;let i=index" class="conatainer row col-12 mb-2">
+                <h4>Tutor {{i+1}}</h4>
+                <hr>
+                <div class="form-group col-12 col-md-6 col-lg-3 mb-2">
+                    <label class="form-text">Nombre</label>
+                    <input class="form-control fw-bold" placeholder="Nombre" type="text" [(ngModel)]="tutor.nombre"
+                        name="nombre" disabled>
+                </div>
+                <div class="form-group col-12 col-md-6 col-lg-3 mb-2">
+                    <label class="form-text">Segundo Nombre</label>
+                    <input class="form-control fw-bold" placeholder="Segundo Nombre" type="text"
+                        [(ngModel)]="tutor.segundoNombre" name="segundoNombre" disabled>
+                </div>
+                <div class="form-group col-12 col-md-6 col-lg-3 mb-2">
+                    <label class="form-text">Apellido Paterno</label>
+                    <input class="form-control fw-bold" placeholder="Apellido Paterno" type="text"
+                        [(ngModel)]="tutor.apellidoPaterno" name="apellidoPaterno" disabled>
+                </div>
+                <div class="form-group col-12 col-md-6 col-lg-3 mb-4">
+                    <label class="form-text">Apellido Materno</label>
+                    <input class="form-control fw-bold" placeholder="Apellido Materno" type="text"
+                        [(ngModel)]="tutor.apellidoMaterno" name="apellidoMaterno" disabled>
+                </div>
+                <div *ngIf="tutor.correos.length > 0">
+                    <h5 >Datos de Contacto del Tutor {{i+1}}</h5>
+                    <hr >
+                    <h5 >Correos</h5>
+        
+                    <table *ngIf="tutor.correos.length > 0" class="table mb-4">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Correo</th>
+                                <th class="text-center">Status</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let correo of tutor.correos">
+                                <td class="text-center">{{correo.correo}}</td>
+                                <td class="text-center fs-4"><i *ngIf="correo.status"
+                                        class="fa-solid fa-check-double text-success"></i>
+                                    <i *ngIf="!correo.status" class="fa-solid fa-x text-danger"></i>
+                                </td>
+                                <td class="d-flex justify-content-center"><button *ngIf="correo.status"
+                                        class="btn btn btn-outline-danger rounded-pill fs-6 fw-bold"
+                                        (click)="cambiarStatus(correo)"><i class="fa-solid fa-circle-xmark"></i>
+                                        Desactivar</button>
+                                    <button *ngIf="!correo.status" class="btn btn-outline-primary rounded-pill fs-6 fw-bold"
+                                        (click)="cambiarStatus(correo)"><i class="fa-solid fa-circle-check"></i> Activar
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
